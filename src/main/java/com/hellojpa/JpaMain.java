@@ -103,6 +103,8 @@ public class JpaMain {
 			<!-- <property name="hibernate.jdbc.batch_size" value="10"/> : 10개를 모아서 DB에 flush 하겠다는 뜻 --> */
 			
 			
+			
+			/* set + 준영속 상태
 			Member member = em.find(Member.class, 150L);
 			member.setName("CCCCC");
 			//em.persist(member); 저장 필요 없음
@@ -115,7 +117,7 @@ public class JpaMain {
 			//em.clear();
 			//영속성 컨텍스트 완전히 비우기
 			
-			System.out.println("====================="); 
+			System.out.println("=====================");  */
 			
 			
 			
