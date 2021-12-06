@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              version="2.1">
-    <persistence-unit name="hello">
+    <persistence-unit name="jpashop">
     	<!-- JPA 구현체들은 보통 엔티티 클래스를 자동으로 인식하지만 환경에 따라 인식을 못할 때가 있음. 그럴 때의 엔티티 클래스 설정 
         <class>com.hellojpa.Test</class> -->
         <properties>
@@ -17,7 +17,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <!-- <property name="hibernate.jdbc.batch_size" value="10"/> : 10개를 모아서 DB에 flush 하겠다는 뜻 -->
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <!-- create : 기존 테이블 삭제 후 다시 생성 (DROP + CREATE) -->
         </properties>
     </persistence-unit>
