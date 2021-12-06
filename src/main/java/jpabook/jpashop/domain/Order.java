@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,7 +31,7 @@ public class Order extends BaseEntity {
 	//참조 대신 외래 키를 그대로 사용 -> 객체 설계를 테이블 설계에 맞춘 방식. 객체 그래프 탐색이 불가능한 문제점이 있음.
 	//id가 아닌 member로 가져와야 객체 지향 모델링
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_ID")
 	private Member member;
 	//DB관계상 누가 1이고 누가 N인지 잘 생각해서 어노테이션을 적어줘야 함.
@@ -39,11 +41,11 @@ public class Order extends BaseEntity {
 	//@OneToMany(mappedBy = "member")
 	//private List<Order> orders = new ArrayList<>();
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "DELIVERY_ID")
 	private Delivery delivery;
 	
-	@OneToMany(mappedBy = "order") 	//이 양방향 매핑은 비즈니스적으로 필요함
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL) 	//이 양방향 매핑은 비즈니스적으로 필요함
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
 	public void addOrderItem(OrderItem orderItem) {
