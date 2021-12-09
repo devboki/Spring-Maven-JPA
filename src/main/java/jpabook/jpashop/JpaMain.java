@@ -6,8 +6,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import jpabook.jpashop.domain.Book;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
 
 public class JpaMain {
 public static void main(String[] args) {	
@@ -28,6 +26,7 @@ public static void main(String[] args) {
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			em.close();
 		}
